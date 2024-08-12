@@ -10,7 +10,7 @@ public class Main {
         arvoreBinaria.inserir(31);
 
         arvoreBinaria.emOrdem(arvoreBinaria.getRaiz());
-        arvoreBinaria.remDoisFilhos(3);
+        arvoreBinaria.remNoRaiz();
         arvoreBinaria.emOrdem(arvoreBinaria.getRaiz());
     }
 }
