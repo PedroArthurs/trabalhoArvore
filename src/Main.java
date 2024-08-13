@@ -9,7 +9,7 @@ public class Main {
         arvoreBinaria.inserir(15);
         arvoreBinaria.inserir(31);
 
-        arvoreBinaria.emOrdem(arvoreBinaria.getRaiz());
+        arvoreBinaria.posOrdem(arvoreBinaria.getRaiz());
         arvoreBinaria.remNoRaiz();
         arvoreBinaria.emOrdem(arvoreBinaria.getRaiz());
     }

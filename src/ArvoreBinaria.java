@@ -66,6 +66,7 @@ public class ArvoreBinaria {
         No atual = this.raiz;
         No pai = null;
 
+        //Enquanto não encontro o no
         while(atual != null && atual.getValor() != valor) {
             pai = atual;
             if (valor < atual.getValor()) {
@@ -74,18 +75,19 @@ public class ArvoreBinaria {
                 atual = atual.getDir();
             }
         }
-
+        //Se o no não existir
         if (atual == null ) {
             System.out.println("O nó com o valor " + valor + " não existe");
             return;
         }
 
+        // Verifica se o nó é uma folha
         if(atual.getEsq() == null && atual.getDir() == null) {
-
+            // Se o nó é a raiz
             if(atual == this.raiz) {
                 this.raiz = null;
             }else {
-
+                // Se o nó é um filho esquerdo ou direito
                 if (pai.getEsq() == atual) {
                     pai.setEsq(null) ;
                 }else {
@@ -103,30 +105,33 @@ public class ArvoreBinaria {
         if (this.raiz == null) {
             System.out.println("A arvore está vazia");
         }
-
+         // Se a raiz é uma folha
         if (this.raiz.getEsq() == null && this.raiz.getDir() == null ) {
             this.raiz = null;
 
         }
-
+        // Se a raiz tem apenas um filho
         else if (this.raiz.getEsq() == null) {
             this.raiz = this.raiz.getDir();
         } else if (this.raiz.getDir() == null) {
             this.raiz = this.raiz.getEsq();
 
         }
+        // Se a raiz tem dois filhos
         else {
 
             No sucessor = this.raiz.getDir();
             No paiSucessor = this.raiz;
-
+        // Percorre a subárvore direita para encontrar o menor nó
             while(sucessor.getEsq() != null) {
                 paiSucessor = sucessor;
                 sucessor = sucessor.getEsq();
             }
 
+            // O sucessor assume o lugar da raiz
             this.raiz.setValor(sucessor.getValor());
 
+            // Remove o nó sucessor da subárvore
             if(paiSucessor.getEsq() == sucessor) {
                 paiSucessor.setEsq(paiSucessor.getDir());
             }else {
@@ -139,7 +144,7 @@ public class ArvoreBinaria {
     public void remUmFilho(int valor) {
         No atual = this.raiz;
         No pai = null;
-
+        // Percorre a árvore até encontrar o nó a ser removido
         while (atual != null && atual.getValor() != valor ) {
             pai = atual;
             if (valor < atual.getValor()) {
@@ -148,13 +153,14 @@ public class ArvoreBinaria {
                 atual = atual.getDir();
             }
         }
-
+        // Se não for encontrado
         if (atual == null) {
             System.out.println("No com valor " + valor + "não foi encontrado");
         }
 
+        // Verifica se o no a ser removido tem apenas um filho
         if (atual.getEsq() == null && atual.getDir() != null) {
-
+           // Se o no tem apenas um filho a direita
             if (pai == null) {
                 this.raiz = atual.getDir();
             } else if (pai.getEsq() == atual) {
@@ -164,7 +170,7 @@ public class ArvoreBinaria {
             }
 
         } else if (atual.getDir() == null && atual.getEsq() != null) {
-
+           // Se o no tem apenas um filho a esquerda
             if (pai == null) {
                 this.raiz = atual.getEsq();
             } else if (pai.getDir() == atual) {
@@ -182,6 +188,7 @@ public class ArvoreBinaria {
         No atual = this.raiz;
         No pai = null;
 
+        // Percorre a árvore para encontrar o no a ser removido
         while (atual != null && atual.getValor() != valor) {
             pai = atual;
             if (valor < atual.getValor()) {
@@ -191,22 +198,27 @@ public class ArvoreBinaria {
             }
         }
 
+        // Se o no não foi encontrado
         if (atual == null) {
             System.out.println("No com valor " + valor + " não encontrado");
         }
 
+        // Verifica se o no tem dois filhos
         if (atual.getEsq() != null && atual.getDir() != null) {
 
             No sucessor = atual.getDir();
             No paiSucessor = atual;
 
+            // Percorre a subárvore direita para encontrar o menor nó
             while (sucessor.getEsq() != null) {
                 paiSucessor = sucessor;
                 sucessor = sucessor.getEsq();
             }
 
+            // Substitiu o valor do nó atual pelo sucessor
             atual.setValor(sucessor.getValor());
 
+            // Remove o sucessor
             if (paiSucessor.getEsq() == sucessor) {
                 paiSucessor.setEsq(sucessor.getDir());
             }else {
